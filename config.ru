@@ -1,7 +1,7 @@
 require "rubygems"
 require "bundler"
 
-Bundler.require
+Bundler.require(:default, ENV.fetch("RACK_ENV", "development"))
 
 require "./fever_api"
 map "/fever" do
