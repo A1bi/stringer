@@ -27,6 +27,8 @@ gem "whenever", require: false
 gem "will_paginate", "~> 3.1"
 
 group :development do
+  gem "capistrano", "~> 3.14", require: false
+  gem "capistrano-bundler", "~> 2.0", require: false
   gem "rubocop", ">= 0.61.1", require: false
   gem "shotgun", "~> 0.9"
 end
