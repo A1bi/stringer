@@ -2,22 +2,24 @@ require "feedbag"
 require "feedjira"
 
 class FeedDiscovery
-  def discover(url, finder = Feedbag, parser = Feedjira::Feed)
-    get_feed_for_url(url, parser) do
-      urls = finder.find(url)
-      return false if urls.empty?
+  def discover(url)
+    feed = get_feed_for_url(url)
+    return feed if feed
 
-      get_feed_for_url(urls.first, parser) do
-        return false
-      end
-    end
+    urls = Feedbag.find(url)
+    return if urls.empty?
+
+    get_feed_for_url(urls.first)
   end
 
-  def get_feed_for_url(url, parser)
-    feed = parser.fetch_and_parse(url)
+  def get_feed_for_url(url)
+    response = HTTParty.get(url)
+    raise "Feed could not be fetched" unless response.success?
+
+    feed = Feedjira.parse(response.body)
     feed.feed_url ||= url
     feed
   rescue StandardError
-    yield if block_given?
+    nil
   end
 end

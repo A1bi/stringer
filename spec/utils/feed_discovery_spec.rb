@@ -1,52 +1,54 @@
+require "webmock/rspec"
+
 require "spec_helper"
 
 app_require "utils/feed_discovery"
 
 describe FeedDiscovery do
-  let(:finder) { double }
-  let(:parser) { double }
+  subject { FeedDiscovery.new.discover(url) }
+
   let(:feed) { double(feed_url: url) }
   let(:url) { "http://example.com" }
 
-  let(:invalid_discovered_url) { "http://not-a-valid-feed.com" }
-  let(:valid_discovered_url) { "http://a-valid-feed.com" }
-
   describe "#discover" do
-    it "returns false if url is not a feed and feed url cannot be discovered" do
-      expect(parser).to receive(:fetch_and_parse).with(url).and_raise(StandardError)
-      expect(finder).to receive(:find).and_return([])
+    context "when feed cannot be fetched" do
+      let(:invalid_discovered_url) { "http://not-a-valid-feed.com" }
+      let(:valid_discovered_url) { "http://a-valid-feed.com" }
 
-      result = FeedDiscovery.new.discover(url, finder, parser)
+      before do
+        stub_request(:get, url).to_return(status: 404)
+        stub_request(:get, invalid_discovered_url).to_return(status: 404)
+        stub_request(:get, valid_discovered_url).to_return(body: "foo")
+        allow(Feedbag).to receive(:find).with(url).and_return(found_urls)
+        allow(Feedjira).to receive(:parse).with("foo").and_return(feed)
+      end
 
-      expect(result).to eq(false)
+      context "when no other other urls can be found" do
+        let(:found_urls) { [] }
+
+        it { is_expected.to be_nil }
+      end
+
+      context "when an invalid url is found" do
+        let(:found_urls) { [invalid_discovered_url] }
+
+        it { is_expected.to be_nil }
+      end
+
+      context "when a valid url is found" do
+        let(:found_urls) { [valid_discovered_url] }
+
+        it { is_expected.to eq(feed) }
+      end
     end
 
-    it "returns a feed if the url provided is parsable" do
-      expect(parser).to receive(:fetch_and_parse).with(url).and_return(feed)
+    context "when feed can be fetched" do
+      before do
+        stub_request(:get, url).to_return(body: "foo")
+        allow(Feedjira).to receive(:parse).with("foo").and_return(feed)
+      end
 
-      result = FeedDiscovery.new.discover(url, finder, parser)
-
-      expect(result).to eq feed
-    end
-
-    it "returns false if the discovered feed is not parsable" do
-      expect(parser).to receive(:fetch_and_parse).with(url).and_raise(StandardError)
-      expect(finder).to receive(:find).and_return([invalid_discovered_url])
-      expect(parser).to receive(:fetch_and_parse).with(invalid_discovered_url).and_raise(StandardError)
-
-      result = FeedDiscovery.new.discover(url, finder, parser)
-
-      expect(result).to eq(false)
-    end
-
-    it "returns the feed if the discovered feed is parsable" do
-      expect(parser).to receive(:fetch_and_parse).with(url).and_raise(StandardError)
-      expect(finder).to receive(:find).and_return([valid_discovered_url])
-      expect(parser).to receive(:fetch_and_parse).with(valid_discovered_url).and_return(feed)
-
-      result = FeedDiscovery.new.discover(url, finder, parser)
-
-      expect(result).to eq feed
+      it { is_expected.to eq(feed) }
     end
   end
 end
