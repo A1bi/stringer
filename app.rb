@@ -28,7 +28,6 @@ class Stringer < Sinatra::Base
   register AssetPipeline
 
   configure do
-    set :database_file, "config/database.yml"
     set :views, "app/views"
     set :public_dir, "app/public"
     set :root, File.dirname(__FILE__)

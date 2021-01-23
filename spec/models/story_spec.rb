@@ -6,8 +6,8 @@ app_require "models/story"
 describe "Story" do
   let(:story) do
     Story.new(
-      title: Faker::Lorem.sentence(50),
-      body: Faker::Lorem.sentence(50)
+      title: Faker::Lorem.sentences(number: 10),
+      body: Faker::Lorem.sentences(number: 10)
     )
   end
 
