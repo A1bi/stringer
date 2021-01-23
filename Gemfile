@@ -21,7 +21,6 @@ gem "sinatra-contrib", "~> 2.1.0"
 gem "sinatra-flash", "~> 0.3"
 gem "sprockets", "~> 4.0.2"
 gem "sprockets-helpers"
-gem "thread", "~> 0.2"
 gem "uglifier"
 gem "whenever", require: false
 gem "will_paginate", "~> 3.1"

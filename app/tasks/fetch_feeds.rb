@@ -1,27 +1,18 @@
-require "thread/pool"
-
 require_relative "fetch_feed"
 
 class FetchFeeds
-  def initialize(feeds, pool = nil)
-    @pool  = pool
+  def initialize(feeds)
     @feeds = feeds
-    @feeds_ids = []
   end
 
   def fetch_all
-    @pool ||= Thread.pool(10)
-
-    @feeds = FeedRepository.fetch_by_ids(@feeds_ids) if @feeds.blank? && !@feeds_ids.blank?
-
     @feeds.each do |feed|
-      @pool.process do
+      thread = Thread.new do
         FetchFeed.new(feed).fetch
-
-        ActiveRecord::Base.connection.close
+      ensure
+        ActiveRecord::Base.clear_active_connections!
       end
+      thread.join
     end
-
-    @pool.shutdown
   end
 end
