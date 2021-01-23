@@ -23,6 +23,7 @@ gem "sprockets", "~> 4.0.2"
 gem "sprockets-helpers"
 gem "thread", "~> 0.2"
 gem "uglifier"
+gem "whenever", require: false
 gem "will_paginate", "~> 3.1"
 
 group :development do
