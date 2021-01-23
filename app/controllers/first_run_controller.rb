@@ -28,7 +28,6 @@ class Stringer < Sinatra::Base
     end
 
     get "/tutorial" do
-      FetchFeeds.enqueue(Feed.all)
       CompleteSetup.complete(current_user)
 
       @sample_stories = StoryRepository.samples

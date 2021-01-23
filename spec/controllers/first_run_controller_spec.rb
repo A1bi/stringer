@@ -56,7 +56,6 @@ describe "FirstRunController" do
 
       it "displays the tutorial and completes setup" do
         expect(CompleteSetup).to receive(:complete).with(user).once
-        expect(FetchFeeds).to receive(:enqueue).with(feeds).once
 
         get "/setup/tutorial"
 

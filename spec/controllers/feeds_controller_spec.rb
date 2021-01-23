@@ -85,7 +85,6 @@ describe "FeedsController" do
 
       it "adds the feed and queues it to be fetched" do
         expect(AddNewFeed).to receive(:add).with(feed_url).and_return(valid_feed)
-        expect(FetchFeeds).to receive(:enqueue).with([valid_feed])
 
         post "/feeds", feed_url: feed_url
 

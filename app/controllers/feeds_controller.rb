@@ -40,8 +40,6 @@ class Stringer < Sinatra::Base
     feed = AddNewFeed.add(@feed_url)
 
     if feed && feed.valid?
-      FetchFeeds.enqueue([feed])
-
       flash[:success] = t("feeds.add.flash.added_successfully")
       redirect to("/")
     elsif feed

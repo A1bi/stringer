@@ -24,14 +24,4 @@ class FetchFeeds
 
     @pool.shutdown
   end
-
-  def prepare_to_delay
-    @feeds_ids = @feeds.map(&:id)
-    @feeds = []
-    self
-  end
-
-  def self.enqueue(feeds)
-    new(feeds).prepare_to_delay.delay.fetch_all
-  end
 end

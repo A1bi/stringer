@@ -26,8 +26,6 @@ end
 
 gem "activerecord", "~> 6.1.1"
 gem "bcrypt", "~> 3.1"
-gem "delayed_job", "~> 4.1"
-gem "delayed_job_active_record", "~> 4.1"
 gem "feedbag", "~> 0.10.1"
 gem "httparty", "~> 0.17"
 gem "i18n"
