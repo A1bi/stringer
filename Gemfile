@@ -12,13 +12,16 @@ end
 
 group :development, :test do
   gem "byebug", "~> 11.1.3"
-  gem "capybara", "~> 3.34"
   gem "faker", "~> 2.15"
   gem "rack-test", "~> 1.1"
   gem "rspec", "~> 3.4"
   gem "rspec-html-matchers", "~> 0.7"
   gem "shotgun", "~> 0.9"
   gem "timecop", "~> 0.8"
+end
+
+group :test do
+  gem "webmock", "~> 3.11"
 end
 
 gem "activerecord", "~> 6.1.1"
@@ -28,7 +31,7 @@ gem "delayed_job_active_record", "~> 4.1"
 gem "feedbag", "~> 0.10.1"
 gem "httparty", "~> 0.17"
 gem "i18n"
-gem "feedjira", "~> 2.1.3"
+gem "feedjira", "~> 3.1.2"
 gem "loofah", "~> 2.3"
 gem "nokogiri", "~> 1.10"
 gem "pg", "~> 1.2"
