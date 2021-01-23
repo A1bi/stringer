@@ -6,7 +6,7 @@ sv:
     sorry: Tyvärr, du har inte läst några berättelser än!
   date:
     abbr_month_names:
-    - 
+    -
     - jan
     - feb
     - mar
@@ -142,9 +142,6 @@ sv:
     as_read: som lästa
     click_to_read: (klicka för att läsa)
     description: Vi hämtar några berättelser åt dig, ge oss en stund.
-    heroku_hourly_task: Du behöver lägga till ett timvis återkommande jobb för att ladda nya berättelser.
-    heroku_one_more_thing: En sak till...
-    heroku_scheduler: Gå till Heroku Scheduler och lägg till detta jobb
     mark_all: markera alla
     ready: Ok, det är klart!
     refresh: uppdatera

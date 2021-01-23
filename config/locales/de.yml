@@ -6,7 +6,7 @@ de:
     sorry: Entschuldigung, du hast noch keine Geschichten gelesen.
   date:
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mär
@@ -142,9 +142,6 @@ de:
     as_read: als gelesen markieren
     click_to_read: (klicken um zu lesen)
     description: Wir besorgen dir Geschichten zum Lesen, gib uns eine Sekunde.
-    heroku_hourly_task: Du brauchst einen stündlichen Cronjob, um auf neue Artikel zu prüfen
-    heroku_one_more_thing: Eine kleine Sache noch...
-    heroku_scheduler: Geh zum Heroku Scheduler und füge folgenden Task hinzu
     mark_all: alle
     ready: Okay, es ist bereit!
     refresh: aktualisieren

@@ -6,7 +6,7 @@ eo:
     sorry: Bedaŭrinde, vi ankoraŭ ne legis ajnajn rakontojn.
   date:
     abbr_month_names:
-    - 
+    -
     - jan
     - feb
     - mar
@@ -142,9 +142,6 @@ eo:
     as_read: kiel legita
     click_to_read: (klaku legi)
     description: Ni ekhavas nuntempe kelkajn rakontojn legi, bonvolu atendi.
-    heroku_hourly_task: Vi bezonas aldoni hora tasko kontroli novajn fluojn.
-    heroku_one_more_thing: Unu pli aro...
-    heroku_scheduler: Iru Heroku kaj aldonu tiun horaran taskon
     mark_all: Marki ĉia
     ready: Okej, estas preta!
     refresh: aktualigi

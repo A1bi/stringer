@@ -33,7 +33,7 @@ RSpec.describe Sinatra::AuthenticationHelpers do
       end
     end
 
-    %w(/login /logout /heroku).each do |path|
+    %w(/login /logout).each do |path|
       context "when `path` is '#{path}'" do
         it "returns false" do
           expect(helper.needs_authentication?(path)).to eq(false)

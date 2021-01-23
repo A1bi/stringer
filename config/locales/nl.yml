@@ -6,7 +6,7 @@ nl:
     sorry: Sorry, je hebt nog geen artikelen gelezen!
   date:
     abbr_month_names:
-    - 
+    -
     - jan
     - feb
     - mar
@@ -142,9 +142,6 @@ nl:
     as_read: als gelezen markeren
     click_to_read: (klik om te lezen)
     description: We zijn je artikelen aan het ophalen, geef ons even.
-    heroku_hourly_task: Om nieuwe artikelen binnen te halen is het nodig dat je een taak instelt die elk uur uitgevoerd wordt.
-    heroku_one_more_thing: Nog een ding...
-    heroku_scheduler: Ga naar de Heroku Scheduler en voeg deze taak toe
     mark_all: alles
     ready: Okay, klaar!
     refresh: vernieuwen

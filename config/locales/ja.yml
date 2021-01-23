@@ -6,7 +6,7 @@ ja:
     sorry: ごめんなさい、なにもストーリーを読み込んでません
   date:
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -142,9 +142,6 @@ ja:
     as_read: as read
     click_to_read: (click to read)
     description: あなたのストーリーを読み込んでます、しばらくお待ち下さい
-    heroku_hourly_task: 新しいストーリーをチェックする毎時タスクを追加する必要があります
-    heroku_one_more_thing: もうひとつ…
-    heroku_scheduler: Heroku Scheduler ページに行き、このタスクを追加する
     mark_all: mark all
     ready: 準備OK!
     refresh: refresh
