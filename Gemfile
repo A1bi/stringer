@@ -1,9 +1,5 @@
 source "https://rubygems.org"
 
-group :production do
-  gem "unicorn", "~> 5.3"
-end
-
 group :development do
   gem "rubocop", ">= 0.61.1", require: false
 end
@@ -31,6 +27,7 @@ gem "feedjira", "~> 3.1.2"
 gem "loofah", "~> 2.3"
 gem "nokogiri", "~> 1.10"
 gem "pg", "~> 1.2"
+gem "puma", "~> 5.1"
 gem "rack-protection", "~> 2.1"
 gem "rack-ssl", "~> 1.4"
 gem "racksh", "~> 1.0"
